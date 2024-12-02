@@ -5,6 +5,7 @@ import articles from './article-content';
 import Articles from '../components/Articles';
 import NotFount from './NotFount';
 import CommentList from '../components/CommentsList'
+import AddCommentForm from '../components/AddCommentForm';
 
 const Article = () => {
     const {name} = useParams();
@@ -29,7 +30,7 @@ const Article = () => {
       ))}
 
       <CommentList comments={articleInfo.comments}/>
-
+      <AddCommentForm articlename={name} setArticalInfo={setArticleInfo}/>
       <h1 className='sm:text-2xl text-xl font-bold text-gray-900'>Other Details</h1>
       <div className='flex flex-wrap -m-4'>
         <Articles  articles={otherArticles}/>
