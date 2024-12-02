@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors')
 const { MongoClient } = require('mongodb');
 const PORT = 8000;
 
@@ -7,6 +8,13 @@ const PORT = 8000;
 app.get('/', (req, res) => {
     res.send('Hello, world!');
 });
+
+app.use(cors({
+    origin: 'http://localhost:5173',  // Replace with your frontend URL
+    credentials: true,  // Allow cookies to be sent
+    allowedHeaders: ['Content-Type', 'Authorization'] // Add other headers as necessary
+  }));
+
 app.use(express.json());
 // Helper function for database operations
 const withDb = async (operation, res) => {
