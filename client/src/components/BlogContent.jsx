@@ -4,7 +4,7 @@ const BlogContent = ({ content }) => {
   const processContent = (text) => {
     // Replace text wrapped in backticks with <code> tags and apply Tailwind classes
     const codePattern = /`([^`]+)`/g;
-    text = text.replace(codePattern, '<div class="bg-black-rgba py-4 text-white w-full p-2 rounded-md">$1</div>');
+    text = text.replace(codePattern, '<div class="bg-green-100 py-4 text-black font-semibold w-full p-2 rounded-md">$1</div>');
 
     // Replace words to be bold (like Markdown `**bold**`)
     const boldPattern = /\*\*([^*]+)\*\*/g;
