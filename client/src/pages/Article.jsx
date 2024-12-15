@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import articleContent from "./article-content";
-import articles from "./article-content";
 import Articles from "../components/Articles";
 import NotFount from "./NotFount";
 import CommentList from "../components/CommentsList";
@@ -37,7 +35,7 @@ const Article = () => {
     };
     const getOtherArticles = async()=>{
       try {
-        const response = await axios.get(`http://localhost:8000/api/blogs?other=${name}&limit=3`);
+        const response = await axios.get(`http://localhost:8000/api/blogs?other=${name}&limit=4`);
         setOtherArticles(response.data);
       } catch (error) {
         setError('Failed to fetch article');
@@ -56,24 +54,7 @@ const Article = () => {
 
   if (!article) {
     return <NotFount/>;
-  }else{
-    
   }
-
-
-  // const article = articleContent.find((article)=> article.name === name);
-
-  // useEffect(()=>{
-  //   const fetchData = async () =>{
-  //     const result = await fetch(`http://localhost:8000/api/articles/${name}`);
-  //     const body = await result.json();
-  //     console.log(body)
-  //     setArticleInfo(body);
-  //   };
-  //   fetchData();
-  // },[name]);
-  // if(!article) return <NotFount/>
-  // const otherArticles = articleContent.filter(article=>article.name != name);
   return (
     <>
       <h1 className="sm:text-4xl text-2xl font-bold my-6 text-gray-900">
@@ -85,15 +66,14 @@ const Article = () => {
           {para}
         </p>
       ))}
-
-      <CommentList comments={article.comments} />
-      <AddCommentForm articlename={name} setArticalInfo={setArticleData} />
-      <h1 className="sm:text-2xl text-xl font-bold text-gray-900">
-        Other Details
+      <h1 className="sm:text-2xl text-xl font-bold text-gray-900 my-5">
+        Other Articles
       </h1>
-      <div className='flex flex-wrap -m-4'>
+      <div className='flex flex-wrap -m-4 mb-5'>
         <Articles  articles={otherArticles}/>
       </div>
+      <AddCommentForm articlename={name} setArticalInfo={setArticleData} />
+      <CommentList comments={article.comments} />
     </>
   );
 };
