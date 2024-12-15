@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 });
 
 app.use(cors({
-    origin: 'https://mern-blog-peach-one.vercel.app/',  // Replace with your frontend URL
+    origin: 'http://localhost:5173',  // Replace with your frontend URL
     credentials: true,  // Allow cookies to be sent
     allowedHeaders: ['Content-Type', 'Authorization'] // Add other headers as necessary
   }));

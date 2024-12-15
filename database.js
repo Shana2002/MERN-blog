@@ -1,13 +1,17 @@
 import {MongoClient} from 'mongodb'
+import dotenv from 'dotenv';
+dotenv.config();
+const MONGO_URL = process.env.MONGODB_URL;
+if (!MONGO_URL) {
+  throw new Error("MONGODB_URL environment variable is not defined.");
+}
 
-
-console.log("hellooo");
 // Helper function for database operations
 export const withDb = async (operation, res) => {
     let client;
     try {
-        client = await MongoClient.connect("mongodb+srv://hansakaravi02:m8p7LaxEcJ7tjsCA@mern-blog.d4o2s.mongodb.net/?retryWrites=true&w=majority&appName=mern-blog");
-        console.log('connected')
+        client = await MongoClient.connect(process.env.MONGODB_URL);
+        // console.log('connected')
         const db = client.db("mernblog");
         await operation(db);
     } catch (error) {

@@ -1,17 +1,25 @@
 {
-  "name": "mern-blog-backend",
+  "name": "mern-blog",
   "version": "1.0.0",
-  "description": "Mern App Backend",
+  "description": "Mern App to full stack development",
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "node server.js"
+    "server": "nodemon server",
+    "client": "npm run dev --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
+  "keywords": [],
+  "author": "shana2002",
+  "license": "ISC",
   "dependencies": {
-    "axios": "^0.27.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.1",
     "mongodb": "^6.11.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "nodemon": "^3.1.7"
   }
 }
