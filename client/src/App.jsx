@@ -15,7 +15,7 @@ const App = () => {
   return (
     <Router>
       <Navbar/>
-      <div className="max-w-screen-md mx-auto pt-20">
+      <div className="max-w-screen-lg mx-auto pt-20">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
