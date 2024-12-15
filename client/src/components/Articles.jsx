@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from 'react-router-dom';
+const IMAGE_URL = import.meta.env.VITE_IMAGE_URL;
 
 const Articles = ({articles}) => {
   return (
@@ -9,7 +10,7 @@ const Articles = ({articles}) => {
           <div className="h-full border-2 border-gray-200  rounded-lg overflow-hidden">
             <Link to={`/article/${article.name}`}>
               <img
-                src={article.thumbnail}
+                src={IMAGE_URL+article.thumbnail}
                 alt="blog"
                 className="lg:h-48 md:h-36 w-full object-cover object-center"
               />

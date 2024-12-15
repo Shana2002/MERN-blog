@@ -6,6 +6,8 @@ import CommentList from "../components/CommentsList";
 import AddCommentForm from "../components/AddCommentForm";
 import axios from "axios";
 import BlogContent from "../components/BlogContent";
+const API_URL = import.meta.env.VITE_API_URL;
+const IMAGE_URL = import.meta.env.VITE_IMAGE_URL;
 
 const Article = () => {
   const [article, setArticleData] = useState({});
@@ -18,7 +20,7 @@ const Article = () => {
     const getArticle = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/articles/${name}`
+          `${API_URL}/articles/${name}`
         );
         if (response.status === 404) {
           setLoading(false);
@@ -36,7 +38,7 @@ const Article = () => {
     };
     const getOtherArticles = async()=>{
       try {
-        const response = await axios.get(`http://localhost:8000/api/blogs?other=${name}&limit=4`);
+        const response = await axios.get(`${API_URL}/blogs?other=${name}&limit=4`);
         setOtherArticles(response.data.data);
       } catch (error) {
         setError('Failed to fetch article');
@@ -61,7 +63,7 @@ const Article = () => {
       <h1 className="sm:text-4xl text-2xl font-bold my-6 text-gray-900">
         {article.title}
       </h1>
-      <img className="mx-auto w-4/6" src={article.thumbnail} alt="" />
+      <img className="mx-auto w-4/6" src={IMAGE_URL+article.thumbnail} alt="" />
       <BlogContent content={article.content}/>
       {/* {article.content.map((para, index) => (
         <p className="mx-auto leading-relaxed text-base mb-4" key={index}>

@@ -2,14 +2,15 @@ import axios from "axios";
 import React,{useState,useEffect} from "react";
 import { Link } from "react-router-dom";
 import Articles from "../components/Articles";
+const API_URL = import.meta.env.VITE_API_URL;
+
 
 const Home = () => {
   const [articles,setArtcicles] = useState([]);
-
   useEffect(()=>{
     const getArticles = async() =>{
       try {
-        const response = await axios.get('http://localhost:8000/api/blogs?&limit=4');
+        const response = await axios.get(`${API_URL}/blogs?&limit=4`);
         setArtcicles(response.data.data);
       } catch (error) {
         

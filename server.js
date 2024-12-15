@@ -3,9 +3,13 @@ import cors from 'cors'
 const PORT =8000;
 import {withDb} from './database.js'
 import blogs from './routes/blogs.js'
+import path from 'path'
+import { fileURLToPath } from 'url';
 
 const app = express();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 // Test route
 app.get('/', (req, res) => {
     res.send('Hello, world!');
@@ -36,8 +40,7 @@ app.get('/api/articles/:name', (req, res) => {
 
 // routes 
 app.use('/api/blogs',blogs);
-
-
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.post('/api/articles/:name/add-comments',(req,res)=>{
     const {username , text }=req.body;

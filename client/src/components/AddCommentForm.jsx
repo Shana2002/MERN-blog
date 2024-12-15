@@ -1,12 +1,14 @@
 // import { json } from "express";
 import React,{useState} from "react";
+const API_URL = import.meta.env.VITE_API_URL;
+
 
 const AddCommentForm = ({articlename,setArticalInfo}) => {
     const [username,setUserName] = useState('');
     const [commentText,setCommentText] = useState('');
     const addComments = async (e) =>{
       e.preventDefault();
-        const result = await fetch(`http://localhost:8000/api/articles/${articlename}/add-comments`,{
+        const result = await fetch(`${API_URL}/articles/${articlename}/add-comments`,{
             method:'POST',
             body: JSON.stringify({username ,text:commentText }),
             headers:{

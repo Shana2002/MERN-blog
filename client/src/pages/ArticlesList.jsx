@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios'
 import Articles from '../components/Articles'
+const API_URL = import.meta.env.VITE_API_URL;
 
 const ArticlesList = () => {
   // Set use states
@@ -14,7 +15,7 @@ const ArticlesList = () => {
   useEffect(()=>{
     const fetchArticles = async ()=>{
       try {
-        const response = await axios.get(`http://localhost:8000/api/blogs?page=${currentPage}&limit=5`,);
+        const response = await axios.get(`${API_URL}/blogs?page=${currentPage}&limit=5`,);
         const {data,totalPage}  = response.data;
         console.log(data);
         setArticles(data);
