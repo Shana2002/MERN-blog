@@ -10,7 +10,7 @@ if (!MONGO_URL) {
 export const withDb = async (operation, res) => {
     let client;
     try {
-        client = await MongoClient.connect(process.env.MONGODB_URL);
+        client = await MongoClient.connect("mongodb+srv://hansakaravi02:m8p7LaxEcJ7tjsCA@mern-blog.d4o2s.mongodb.net/?retryWrites=true&w=majority&appName=mern-blog");
         console.log('connected')
         const db = client.db("mernblog");
         await operation(db);
