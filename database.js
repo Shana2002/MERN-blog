@@ -1,11 +1,7 @@
 import {MongoClient} from 'mongodb'
-import dotenv from 'dotenv';
-dotenv.config();
-const MONGO_URL = process.env.MONGODB_URL;
-if (!MONGO_URL) {
-  throw new Error("MONGODB_URL environment variable is not defined.");
-}
 
+
+console.log("hellooo");
 // Helper function for database operations
 export const withDb = async (operation, res) => {
     let client;
