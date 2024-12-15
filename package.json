@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Mern App to full stack development",
   "main": "server.js",
-  "type":"module",
+  "type": "module",
   "scripts": {
     "server": "nodemon server",
     "client": "npm run dev --prefix client",
@@ -13,6 +13,7 @@
   "author": "shana2002",
   "license": "ISC",
   "dependencies": {
+    "axois": "^0.0.1-security",
     "cors": "^2.8.5",
     "express": "^4.21.1",
     "mongodb": "^6.11.0"

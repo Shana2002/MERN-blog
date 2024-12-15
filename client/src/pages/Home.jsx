@@ -10,7 +10,7 @@ const Home = () => {
     const getArticles = async() =>{
       try {
         const response = await axios.get('http://localhost:8000/api/blogs?&limit=4');
-        setArtcicles(response.data);
+        setArtcicles(response.data.data);
       } catch (error) {
         
       }

@@ -5,6 +5,7 @@ import NotFount from "./NotFount";
 import CommentList from "../components/CommentsList";
 import AddCommentForm from "../components/AddCommentForm";
 import axios from "axios";
+import BlogContent from "../components/BlogContent";
 
 const Article = () => {
   const [article, setArticleData] = useState({});
@@ -36,7 +37,7 @@ const Article = () => {
     const getOtherArticles = async()=>{
       try {
         const response = await axios.get(`http://localhost:8000/api/blogs?other=${name}&limit=4`);
-        setOtherArticles(response.data);
+        setOtherArticles(response.data.data);
       } catch (error) {
         setError('Failed to fetch article');
       }
@@ -58,14 +59,15 @@ const Article = () => {
   return (
     <>
       <h1 className="sm:text-4xl text-2xl font-bold my-6 text-gray-900">
-        {" "}
-        This is the {article.title} Article
+        {article.title}
       </h1>
-      {article.content.map((para, index) => (
+      <img className="mx-auto w-4/6" src={article.thumbnail} alt="" />
+      <BlogContent content={article.content}/>
+      {/* {article.content.map((para, index) => (
         <p className="mx-auto leading-relaxed text-base mb-4" key={index}>
           {para}
         </p>
-      ))}
+      ))} */}
       <h1 className="sm:text-2xl text-xl font-bold text-gray-900 my-5">
         Other Articles
       </h1>
@@ -73,7 +75,8 @@ const Article = () => {
         <Articles  articles={otherArticles}/>
       </div>
       <AddCommentForm articlename={name} setArticalInfo={setArticleData} />
-      <CommentList comments={article.comments} />
+      {}
+      <CommentList comments={article.comments??[]} />
     </>
   );
 };
